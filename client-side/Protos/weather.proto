@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option csharp_namespace = "server_side";
+
+package weather;
+
+service WheatherService {
+    rpc GetCurrentWeather(GetCurrentWeatherRequest) returns (WeatherResponse);
+}
+
+message GetCurrentWeatherRequest {
+    string city = 1;    
+    Units unit = 2;
+}
+
+enum Units {
+    Standard = 0;
+    Metric = 1;
+    Imperial = 2;
+}
+
+message WeatherResponse {
+    double temperature = 1;
+    double feels_like = 2;
+}
